@@ -12,7 +12,7 @@ import time
 jieba.setLogLevel(logging.INFO)
 
 def getstopwords():
-    with open("stopwords-zh/中文停用词表.txt", 'r', encoding='utf-8') as f:
+    with open("../stopwords-zh/中文停用词表.txt", 'r', encoding='utf-8') as f:
         stops = f.read()
         return stops.split('\n')
 
@@ -79,7 +79,7 @@ def f(px, py, pxy):
 
 
 def writemss(filename, sorteddict, r_dicts, name, text):
-    with open(filename+".txt", 'w+') as f:
+    with open(filename+".txt", 'w+', encoding='utf-8') as f:
         f.write("发文者: {:^18} 从2019/6/1所发推文数: {}\n".format(name, len(text)))
         for w, times in sorteddict.items():
             f.write("关键字: {:<12} 出现次数: {}\n".format(w, times))
@@ -112,10 +112,10 @@ def format_str(sentence):
 if __name__ == '__main__':
     converter = Converter("zh-hans")
     stopwords = getstopwords()
-    newlist = ['月', '日', '想', ]
+    newlist = ['月', '日', '想', '😂😂😂']
     stopwords.extend(newlist)
-    process_dir = "wordget/zhprocess"
-    data_dir = "wordget/zh"
+    process_dir = "../wordget/zhprocess"
+    data_dir = "../wordget/zh"
     if not os.path.exists(process_dir):
         os.mkdir(process_dir)
     for dir in os.listdir(data_dir):

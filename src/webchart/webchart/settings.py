@@ -38,9 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'wordtimes',
-    'import_export'
+    'import_export',
 ]
-
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
@@ -59,7 +58,9 @@ ROOT_URLCONF = 'webchart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
